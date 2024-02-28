@@ -9,5 +9,5 @@ Project ini menggunakan google maps API, buat account dan API Key : https://deve
 - clone this source
 - buat .env file, GOOGLE_MAPS_KEY=<google maps key>
 - build images using docker : docker build -t diknas-project .
-- run images : docker run -p 80:8080
+- run images : docker run -p 80:8080 diknas-project
 - open browser : http://localhost:8080
