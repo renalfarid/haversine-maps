@@ -1,7 +1,7 @@
 <script setup>
   import { ref, onMounted } from 'vue'
-    import "leaflet/dist/leaflet.css"
-    import * as L from 'leaflet'
+  import "leaflet/dist/leaflet.css"
+  import * as L from 'leaflet'
 
     const initialMap = ref(null)
     const schoolData = ref([])
