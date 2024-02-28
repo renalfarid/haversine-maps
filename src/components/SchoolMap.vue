@@ -13,7 +13,7 @@
 
     const loadSchoolData = async() => {
         try {
-            const response = await fetch('/src/data/sekolah.json');
+            const response = await fetch('/data/sekolah.json');
             schoolData.value = await response.json();
 
             // Iterate through school data and add markers to the map
