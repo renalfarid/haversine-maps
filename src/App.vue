@@ -1,12 +1,9 @@
 <script setup>
-  import SchoolMap from './components/SchoolMap.vue'
-  import SearchSchool from './components/SearchSchool.vue'
   import NewSearch from './components/NewSearch.vue';
-  import BingMaps from './components/BingMaps.vue';
 </script>
 
 <template>
-  <BingMaps />
+  <NewSearch />
 </template>
 
 <style scoped>
