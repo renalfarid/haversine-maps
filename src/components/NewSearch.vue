@@ -6,6 +6,9 @@
   import { Vue3Lottie } from 'vue3-lottie'
   import loadingJson from '../assets/loading.json'
 
+  const gmapsKey = process.env.VUE_APP_GOOGLE_MAPS_KEY
+
+
   const initialMap = ref(null)
 
   const isLoading = ref(false)
@@ -93,7 +96,7 @@ const homeIcon = L.icon({
     try {
       isLoading.value = true;
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(studentAddress.value)}&key=AIzaSyBSbQXTEKHxQHb9Ly0Omvh-BNfkoL9bPQ4`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(studentAddress.value)}&key=${gmapsKey}`
       );
 
       if (!response.ok) {

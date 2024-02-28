@@ -6,6 +6,10 @@
   import { Vue3Lottie } from 'vue3-lottie'
   import loadingJson from '../assets/loading.json'
 
+  const azureMapsKey = process.env.VUE_APP_AZURE_MAPS_KEY
+  const msClientId = process.env.VUE_APP_MS_CLIENT_ID
+
+
   const initialMap = ref(null)
 
   const isLoading = ref(false)
@@ -94,11 +98,11 @@ const homeIcon = L.icon({
       isLoading.value = true;
       
       const response = await fetch(
-        `https://atlas.microsoft.com/search/address/json?api-version=1.0&query=${studentAddress.value}&subscription-key=WBQHzv7hE-qAnqX6OGpjnR5D8vhRHrH0qcdWMR9cN-k`,
+        `https://atlas.microsoft.com/search/address/json?api-version=1.0&query=${studentAddress.value}&subscription-key=${azureMapsKey}`,
         {
             method: 'GET',
             headers: {
-            'x-ms-client-id': '5e2423f5-f39b-47c8-974d-ffcb6789d84e'
+            'x-ms-client-id': `${msClientId}`
             },
         }
         );
