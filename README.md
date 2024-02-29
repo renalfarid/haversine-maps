@@ -4,7 +4,9 @@ Menggunakan datasource SMA Sederajat di sulawesi barat. Lokasi file public/data/
 
 ## How to setup
 
-Project ini menggunakan google maps API, buat account dan API Key : https://developers.google.com/maps/documentation/javascript
+Project ini menggunakan google maps API, buat account dan API Key : https://developers.google.com/maps/documentation/javascript 
+
+Project ini juga dapat diinstall juga dengan docker : https://docs.docker.com/get-docker/
 
 - clone this source
 - buat .env file, 
