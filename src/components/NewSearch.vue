@@ -1,18 +1,24 @@
 <script setup>
   import { ref, onMounted } from 'vue';
   
-  import "leaflet/dist/leaflet.css"
-  import * as L from 'leaflet'
-  import { Vue3Lottie } from 'vue3-lottie'
-  import loadingJson from '../assets/loading.json'
+  import "leaflet/dist/leaflet.css";
+  import * as L from 'leaflet';
+  import { Vue3Lottie } from 'vue3-lottie';
+  import loadingJson from '../assets/loading.json';
+  import { Vue3Snackbar } from "vue3-snackbar";
 
-  const gmapsKey = process.env.VUE_APP_GOOGLE_MAPS_KEY
+  import { useSnackbar } from "vue3-snackbar";
+  const snackbar = useSnackbar();
+  
+
+  const gmapsKey = import.meta.env.VITE_GOOGLE_MAPS_KEY
 
 
   const initialMap = ref(null)
 
   const isLoading = ref(false)
 
+  const errorMessage = ref('')
 
   // Define refs for input values
   const studentName = ref('')
@@ -100,6 +106,12 @@ const homeIcon = L.icon({
       );
 
       if (!response.ok) {
+        errorMessage.value = 'Failed to fetch coordinates';
+        snackbar.add({
+          type: 'error',
+          text: `${errorMessage.value}`
+        });
+        isLoading.value = false;
         throw new Error('Failed to fetch coordinates');
       }
 
@@ -117,10 +129,22 @@ const homeIcon = L.icon({
 
 
       } else {
+        errorMessage.value = 'No results found for the provided address';
+        snackbar.add({
+          type: 'error',
+          text: `${errorMessage.value}`
+        });
+        isLoading.value = false;
         throw new Error('No results found for the provided address');
       }
       isLoading.value = false;
     } catch (error) {
+      errorMessage.value = 'Error fetching coordinates';
+        snackbar.add({
+          type: 'error',
+          text: `${errorMessage.value}`
+        });
+        isLoading.value = false; 
       console.error('Error fetching coordinates:', error.message);
     }
   };
@@ -175,6 +199,7 @@ const homeIcon = L.icon({
 </script>
 
 <template>
+  <vue3-snackbar bottom right :duration="4000"></vue3-snackbar>
   <div class="mt-10 flex md:flex flex-col md:flex-row items-center rounded-md shadow-md">
       <!-- Form Section -->
       <div class="w-full md:w-full lg:w-full mb-4">

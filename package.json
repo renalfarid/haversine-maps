@@ -12,7 +12,8 @@
     "@vue-leaflet/vue-leaflet": "^0.10.1",
     "leaflet": "^1.9.4",
     "vue": "^3.4.19",
-    "vue3-lottie": "^3.2.0"
+    "vue3-lottie": "^3.2.0",
+    "vue3-snackbar": "^2.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
